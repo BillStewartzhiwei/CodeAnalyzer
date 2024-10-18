@@ -11,7 +11,8 @@ namespace CodeAnalyzer
     {
         public static class DianogsticIDs
         {
-            public const string FORCE_NAMING_CONVENTIONS_ID = "FERR1003";
+            public const string FORCE_NAMING_CONVENTIONS_ID = "FERR1001";
+            public const string FORCE_MethodNAMING_CONVENTIONS_IDS = "FERR1002"; 
         }
         public class DiagnosticCategories
         {

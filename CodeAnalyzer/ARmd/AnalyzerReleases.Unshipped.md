@@ -5,3 +5,4 @@
 Rule ID | Category | Severity | Notes
 --------|----------|----------|-------
 FERR1001 | Criterion | Error | ForceStatementBrace
+FERR1002 | Criterion | Error | MethodNAMING

@@ -6,10 +6,47 @@ using System.Collections.Immutable;
 
 namespace ConsoleApp2
 {
+    
     internal class Program
     {
-        static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
+            // 示例：要分析的 C# 代码
+            string codeToAnalyze = @"
+            public class MyClass
+            {
+                public void myMethod() {}
+                public void CorrectMethod() {}
+            }
+        ";
+
+            // 创建一个编译对象来包含代码
+            SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(codeToAnalyze);
+            var compilation = CSharpCompilation.Create("TestCompilation")
+                .AddReferences(MetadataReference.CreateFromFile(typeof(object).Assembly.Location))
+                .AddSyntaxTrees(syntaxTree);
+
+            // 创建分析器
+            var analyzer = new PascalCaseMethodAnalyzer();
+            var analyzers = ImmutableArray.Create<DiagnosticAnalyzer>(analyzer);
+
+            // 运行分析器
+            var compilationWithAnalyzers = compilation.WithAnalyzers(analyzers);
+            var diagnostics = await compilationWithAnalyzers.GetAnalyzerDiagnosticsAsync();
+
+            // 输出诊断结果
+            Console.WriteLine("Diagnostics:");
+            foreach (var diagnostic in diagnostics)
+            {
+                Console.WriteLine(diagnostic);
+            }
+
+            Console.ReadKey();
+        }
+        
+        private static async Task VerificationMethodName()
+        {
+            
             // 测试路径列表
             List<string> testPaths = new List<string>
             {
@@ -37,4 +74,6 @@ namespace ConsoleApp2
             Console.ReadKey();
         }
     }
+    
+    
 }
