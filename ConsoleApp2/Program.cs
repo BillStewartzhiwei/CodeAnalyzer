@@ -4,9 +4,8 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Diagnostics;
 using System.Collections.Immutable;
 
-namespace ConsoleApp2
+namespace ConsoleApp
 {
-    
     internal class Program
     {
         public static async Task Main(string[] args)
@@ -74,6 +73,4 @@ namespace ConsoleApp2
             Console.ReadKey();
         }
     }
-    
-    
 }
