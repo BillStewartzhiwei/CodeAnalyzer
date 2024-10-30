@@ -4,5 +4,5 @@
 ### New Rules
 Rule ID | Category | Severity | Notes
 --------|----------|----------|-------
-FERR1001 | Criterion | Error | ForceStatementBrace
+FERR1001 | Criterion | Error | NAMING
 FERR1002 | Criterion | Error | MethodNAMING

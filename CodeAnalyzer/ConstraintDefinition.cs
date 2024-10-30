@@ -12,7 +12,8 @@ namespace CodeAnalyzer
             "/PackageCache/",
             "/ThirdLibs/",
             "/Plugins/",
-            "/Library/"
+            "/Library/",
+            "/Standard Assets/"
         };
 
         public static bool ExcludeAnalize(string path)

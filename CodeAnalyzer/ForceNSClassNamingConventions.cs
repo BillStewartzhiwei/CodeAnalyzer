@@ -19,9 +19,9 @@ namespace CodeAnalyzer
         private static readonly DiagnosticDescriptor ForceNamingConventionsDescriptor =
             new DiagnosticDescriptor(
                 DianogsticIDs.FORCE_NAMING_CONVENTIONS_ID,          // ID
-                "命名空间或类名不符合规范",    // Title
+                "命名空间或类名不符合规范",    // PascalCaseTitle
                 "命名空间或类名不符合规范", // Message format
-                DiagnosticCategories.Criterion,                // Category
+                DiagnosticCategories.Criterion,                // PascalCaseCategory
                 DiagnosticSeverity.Error, // Severity
                 isEnabledByDefault: true    // Enabled by default
             );
@@ -36,13 +36,11 @@ namespace CodeAnalyzer
         {
             //找到文档的语法根树
             var root = context.Tree.GetRoot(context.CancellationToken);
-
             if (ConstraintDefinition.ExcludeAnalize(context.Tree.FilePath))
             {
                 //排除特殊目录
                 return;
             }
-
             var classNodeList = root.DescendantNodes()?.OfType<ClassDeclarationSyntax>();
             foreach (var cls in classNodeList)
             {
@@ -70,8 +68,7 @@ namespace CodeAnalyzer
                 {
                     var firstChar = n.First().ToString();
                     //如果首字母非大写，则不符合驼峰命名法（粗略检查),复杂的规矩可以自行定义
-                    if (firstChar != firstChar.ToUpper()
-                    )
+                    if (firstChar != firstChar.ToUpper())
                     {
                         //报错
                         var diagnostic = Diagnostic.Create(ForceNamingConventionsDescriptor, ns.GetFirstToken().GetLocation());

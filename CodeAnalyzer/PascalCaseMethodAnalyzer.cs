@@ -11,19 +11,18 @@ namespace CodeAnalyzer
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class PascalCaseMethodAnalyzer : DiagnosticAnalyzer
     {
-        private const string DiagnosticId = "PascalCaseMethod";
-        private const string Title = "Method name should be PascalCase";
-        private const string MessageFormat = "Method '{0}' should be named using PascalCase";
-        private const string Category = "Naming";
+        private const string PascalCaseTitle = "Method name should be PascalCase";
+        private const string PascalCaseMessageFormat = "Method '{0}' should be named using PascalCase";
         private static readonly DiagnosticDescriptor Rule = new DiagnosticDescriptor(
-            DianogsticIDs.FORCE_MethodNAMING_CONVENTIONS_IDS, 
-            Title,
-            MessageFormat, 
-            Category,
+            DianogsticIDs.FORCE_NAMING_CONVENTIONS_ID, 
+            PascalCaseTitle,
+            PascalCaseMessageFormat,
+             DiagnosticCategories.Criterion,
             DiagnosticSeverity.Error,
             isEnabledByDefault: true);
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
+
 
         public override void Initialize(AnalysisContext context)
         {

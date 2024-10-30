@@ -11,12 +11,15 @@ namespace CodeAnalyzer
     {
         public static class DianogsticIDs
         {
+            /// <summary>
+            /// 命名检查
+            /// </summary>
             public const string FORCE_NAMING_CONVENTIONS_ID = "FERR1001";
-            public const string FORCE_MethodNAMING_CONVENTIONS_IDS = "FERR1002"; 
         }
         public class DiagnosticCategories
         {
             public const string Criterion = "Criterion";
+            public const string Naming = "Naming";
         }
     }
 }
