@@ -15,4 +15,8 @@
     <ProjectReference Include="..\CodeAnalyzer\CodeAnalyzer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="FileName.cs" />
+  </ItemGroup>
+
 </Project>

@@ -70,23 +70,20 @@ namespace CodeAnalyzer
                 var tokens = field.ChildTokens();
                 foreach (var token in tokens)
                 {
-                    //不能包含Public变量(可包含Public变量)
-                    /*
-                     
+                    //不能包含Public变量
                     if (token.IsKind(Microsoft.CodeAnalysis.CSharp.SyntaxKind.PublicKeyword))
                     {
                         //报错
                         var diagnostic = Diagnostic.Create(PublicVarDescriptor, field.GetFirstToken().GetLocation());
                         context.ReportDiagnostic(diagnostic);
                         break;//只检查一次
-                    } 
-                     */
-                    
-                    //else 
-                    if (token.IsKind(Microsoft.CodeAnalysis.CSharp.SyntaxKind.PrivateKeyword)
-                        || token.IsKind(Microsoft.CodeAnalysis.CSharp.SyntaxKind.ProtectedKeyword)
-                        || token.IsKind(Microsoft.CodeAnalysis.CSharp.SyntaxKind.InternalKeyword)
-                        || token.IsKind(Microsoft.CodeAnalysis.CSharp.SyntaxKind.IdentifierToken))
+                    }
+
+                    if (!token.IsKind(Microsoft.CodeAnalysis.CSharp.SyntaxKind.PrivateKeyword)
+                        && !token.IsKind(Microsoft.CodeAnalysis.CSharp.SyntaxKind.ProtectedKeyword)
+                        && !token.IsKind(Microsoft.CodeAnalysis.CSharp.SyntaxKind.InternalKeyword)
+                        && !token.IsKind(Microsoft.CodeAnalysis.CSharp.SyntaxKind.IdentifierToken))
+                        continue;
                     {
                         //其他:private protected 等等，使用_开头的小驼峰命名法
                         if (firstChar != "_" || filedName == filedName.ToUpper())
