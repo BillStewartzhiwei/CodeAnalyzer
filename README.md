@@ -4,3 +4,6 @@ PascalCaseMethodAnalyzer.cs specifies that method names must be big hump nomencl
 
 # 2024.10.30
 Add checking temporary variables, checking local variables, and disallowing declarations of common variables in classes
+
+# 2024.10.31
+Add PublicVarDescriptor;
