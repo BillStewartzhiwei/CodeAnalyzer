@@ -39,7 +39,7 @@ namespace CodeAnalyzer
             );
 
 
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(PrivateVarDescriptor);
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(PublicVarDescriptor,PrivateVarDescriptor);
 
         public override void Initialize(AnalysisContext context)
         {
