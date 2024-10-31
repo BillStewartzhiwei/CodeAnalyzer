@@ -26,6 +26,7 @@ namespace CodeAnalyzer
                 DiagnosticCategories.Naming,                // PascalCaseCategory
                 DiagnosticSeverity.Error, // Severity
                 isEnabledByDefault: true    // Enabled by default
+                
             );
 
         private static readonly DiagnosticDescriptor PrivateVarDescriptor =
